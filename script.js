@@ -37,6 +37,12 @@ function doGeoCodeRequest(location) {
         geocodeRequest.onload = function() {
         if (this.status >= 200 && this.status < 400) {
             console.log(this.responseText);
+            
+            let data = JSON.parse(this.responseText);
+            console.log(data);
+            data = data.length ? data[0] : data;
+            let locationName = data.name + " (" + data.country + ")";
+            console.log("Location: " + locationName);
         } else {
             console.warn("Received an error response: status=" + this.status);
         }
