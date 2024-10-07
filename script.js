@@ -31,6 +31,17 @@ function doGeoCodeRequest(location) {
     url = url.replace("{country_code}", "US");
     url = url.replace("{API_key}", API_KEY);
     console.log("URL: " + url);
+
+    let geocodeRequest = new XMLHttpRequest();
+        geocodeRequest.open("GET", url);
+        geocodeRequest.onload = function() {
+        if (this.status >= 200 && this.status < 400) {
+            console.log(this.responseText);
+        } else {
+            console.warn("Received an error response: status=" + this.status);
+        }
+    };
+    geocodeRequest.send();
 }
 
 function setSubmitButtonState() {
