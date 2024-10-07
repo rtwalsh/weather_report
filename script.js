@@ -21,3 +21,13 @@ function submitForm(event) {
     let locationField = document.getElementById("location_field");
     console.log("The user entered: " + locationField.value);
 }
+
+function setSubmitButtonState() {
+    let button = document.getElementById("submit_button");
+    let field = document.getElementById("location_field");
+    if (field.value !== "") {
+      button.disabled = false;
+    } else {
+      button.disabled = true;
+    }
+  }

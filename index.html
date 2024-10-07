@@ -14,8 +14,8 @@
                 then press the Submit button.</p>
                 <form id="input_form" onsubmit="submitForm(event)">
                     <label for="location_field">ZIP code</label>
-                    <input type="text" id="location_field" name="location_field">
-                    <input type="submit" id="submit_button" value="Submit">
+                    <input type="text" id="location_field" name="location_field" oninput="setSubmitButtonState()">
+                    <input type="submit" id="submit_button" value="Submit" disabled>
                 </form>
             </section>
         </div>
