@@ -15,3 +15,9 @@ const GEOCODING_ZIP_CODE_URL = "https://api.openweathermap.org/geo/1.0/zip?zip={
 const GEOCODING_CITY_STATE_URL = "https://api.openweathermap.org/geo/1.0/direct?q={city_name},{state_code},{country_code}&appid={API_key}";
 const CURRENT_WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=imperial&appid={API_key}";
 
+function submitForm(event) {
+    event.preventDefault();
+
+    let locationField = document.getElementById("location_field");
+    console.log("The user entered: " + locationField.value);
+}
