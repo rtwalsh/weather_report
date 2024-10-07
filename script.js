@@ -10,3 +10,8 @@
  * 
  */
 
+const API_KEY = "a0f9f64f8436aa3d33e94c2cdeacf157";
+const GEOCODING_ZIP_CODE_URL = "https://api.openweathermap.org/geo/1.0/zip?zip={zip_code},{country_code}&appid={API_key}";
+const GEOCODING_CITY_STATE_URL = "https://api.openweathermap.org/geo/1.0/direct?q={city_name},{state_code},{country_code}&appid={API_key}";
+const CURRENT_WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=imperial&appid={API_key}";
+
