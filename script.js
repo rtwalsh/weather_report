@@ -20,14 +20,26 @@ function submitForm(event) {
 
     let locationField = document.getElementById("location_field");
     console.log("The user entered: " + locationField.value);
+
+    doGeoCodeRequest(locationField.value);
+}
+
+function doGeoCodeRequest(location) {
+    let url = GEOCODING_ZIP_CODE_URL;
+
+    url = url.replace("{zip_code}", location);
+    url = url.replace("{country_code}", "US");
+    url = url.replace("{API_key}", API_KEY);
+    console.log("URL: " + url);
 }
 
 function setSubmitButtonState() {
     let button = document.getElementById("submit_button");
     let field = document.getElementById("location_field");
     if (field.value !== "") {
-      button.disabled = false;
+        button.disabled = false;
     } else {
-      button.disabled = true;
+        button.disabled = true;
     }
-  }
+}
+
