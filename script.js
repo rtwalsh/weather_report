@@ -85,5 +85,31 @@ function doCurrentWeatherRequest(locationName, lat, lon) {
 }
 
 function displayCurrentWeather(locationName, data) {
+    document.getElementById("weather_location").textContent = locationName;
+    document.getElementById("weather_description").textContent = data.weather[0].description;
+    document.getElementById("weather_temperature").textContent = data.main.temp;
+    document.getElementById("weather_feels_like").textContent = data.main.feels_like;
+    document.getElementById("weather_barometric_pressure").textContent = data.main.pressure;
+    document.getElementById("weather_humidity").textContent = data.main.humidity;
+    document.getElementById("weather_clouds").textContent = data.clouds.all;
+    document.getElementById("weather_wind_speed").textContent = data.wind.speed;
+    document.getElementById("weather_wind_direction").textContent = data.wind.deg;
+    document.getElementById("weather_wind_gusts").textContent = data.wind.gust;
 
+    if (data.rain) {
+        document.getElementById("weather_rain_last_hour").textContent = data.rain["1h"];
+        document.getElementById("weather_rain_last_three_hours").textContent = data.rain["3h"] || 0;
+    } else {
+        document.getElementById("weather_rain_last_hour").textContent = "None";
+        document.getElementById("weather_rain_last_three_hours").textContent = "None";
+    }      
+
+    if (data.snow) {
+        document.getElementById("weather_snow_last_hour").textContent = data.snow["1h"];
+        document.getElementById("weather_snow_last_three_hours").textContent = data.snow["3h"] || 0;
+    } else {
+        document.getElementById("weather_snow_last_hour").textContent = "None";
+        document.getElementById("weather_snow_last_three_hours").textContent = "None";
+    }   
+    document.getElementById("results").style.display = "";   
 }
