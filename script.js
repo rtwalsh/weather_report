@@ -15,6 +15,16 @@ const GEOCODING_ZIP_CODE_URL = "https://api.openweathermap.org/geo/1.0/zip?zip={
 const GEOCODING_CITY_STATE_URL = "https://api.openweathermap.org/geo/1.0/direct?q={city_name},{state_code},{country_code}&appid={API_key}";
 const CURRENT_WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=imperial&appid={API_key}";
 
+function setSubmitButtonState() {
+    let button = document.getElementById("submit_button");
+    let field = document.getElementById("location_field");
+    if (field.value !== "") {
+        button.disabled = false;
+    } else {
+        button.disabled = true;
+    }
+}
+
 function submitForm(event) {
     event.preventDefault();
 
@@ -43,6 +53,7 @@ function doGeoCodeRequest(location) {
             data = data.length ? data[0] : data;
             let locationName = data.name + " (" + data.country + ")";
             console.log("Location: " + locationName);
+            doCurrentWeatherRequest(locationName, data.lat, data.lon);
         } else {
             console.warn("Received an error response: status=" + this.status);
         }
@@ -50,13 +61,29 @@ function doGeoCodeRequest(location) {
     geocodeRequest.send();
 }
 
-function setSubmitButtonState() {
-    let button = document.getElementById("submit_button");
-    let field = document.getElementById("location_field");
-    if (field.value !== "") {
-        button.disabled = false;
-    } else {
-        button.disabled = true;
+function doCurrentWeatherRequest(locationName, lat, lon) {
+    let url = CURRENT_WEATHER_URL;
+
+    url = url.replace("{lat}", lat);
+    url = url.replace("{lon}", lon);
+    url = url.replace("{API_key}", API_KEY);
+    console.log("URL: " + url);
+
+    let currentWeatherRequest = new XMLHttpRequest();
+    currentWeatherRequest.open("GET", url);
+    currentWeatherRequest.onload = function() {
+        if (this.status >= 200 && this.status <= 400) {
+            console.log(this.responseText);
+            let data = JSON.parse(this.responseText);
+            console.log(data);
+            displayCurrentWeather(locationName, data);
+        } else {
+            console.warn("Received an error response: " + this.status);
+        }
     }
+    currentWeatherRequest.send();
 }
 
+function displayCurrentWeather(locationName, data) {
+
+}
