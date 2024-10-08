@@ -18,6 +18,45 @@
                     <input type="submit" id="submit_button" value="Submit" disabled>
                 </form>
             </section>
+            <section id="results" style="display:none;">
+                <h2>Current weather for <span id="weather_location"></span></h2>
+                <dl>
+                    <dt>Description:</dt><dd id="weather_description"></dd>
+                    <dt>Temperature:</dt><dd id="weather_temperature"></dd>
+                    <dt>Feels Like:</dt><dd id="weather_feels_like"></dd>
+                    <dt>Barometric Pressure:</dt><dd id="weather_barometric_pressure"></dd>
+                    <dt>Humidity:</dt><dd id="weather_humidity"></dd>
+                    <dt>Clouds:</dt><dd id="weather_clouds"></dd>
+                    <div class="outlined">
+                        Winds
+                        <div class="indented">
+                            <dl>
+                                <dt>Speed:</dt><dd id="weather_wind_speed"></dd>
+                                <dt>Direction:</dt><dd id="weather_wind_direction"></dd>
+                                <dt>Gusts:</dt><dd id="weather_wind_gusts"></dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="outlined">
+                        Rain
+                        <div class="indented">
+                            <dl>
+                                <dt>Last Hour:</dt><dd id="weather_rain_last_hour"></dd>
+                                <dt>Last 3 Hours:</dt><dd id="weather_rain_last_three_hours"></dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="outlined">
+                        Snow
+                        <div class="indented">
+                            <dl>
+                                <dt>Last Hour:</dt><dd id="weather_snow_last_hour"></dd>
+                                <dt>Last 3 Hours:</dt><dd id="weather_snow_last_three_hours"></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </dl>
+            </section>
         </div>
         <script type="text/javascript" src="script.js"></script>
     </body>
