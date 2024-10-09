@@ -60,9 +60,7 @@ function doGeoCodeRequest(location) {
 }
 
 function createGeocodeUrlForZipCode(zipCode) {
-    let url = GEOCODING_ZIP_CODE_URL;
-    url = url.replace("{zip_code}", zipCode);
-    return url;
+    return GEOCODING_ZIP_CODE_URL.replace("{zip_code}", zipCode);
 }
 
 function doCurrentWeatherRequest(locationName, lat, lon) {
