@@ -11,10 +11,12 @@
             <section id="input_section">
                 <h1>Welcome to the Weather Report!</h1>
                 <p>To get the weather for a specific location, 
-                enter the ZIP code in the input field below, 
-                then press the Submit button.</p>
+                enter either a city and a state or a ZIP code 
+                in the input field below, then press the Submit button.
+                The city and state should be separated by a comma.  For
+                example, "Columbus, MS".</p>
                 <form id="input_form" onsubmit="submitForm(event)">
-                    <label for="location_field">ZIP code</label>
+                    <label for="location_field">City and State or ZIP code</label>
                     <input type="text" id="location_field" name="location_field" oninput="setSubmitButtonState()">
                     <input type="submit" id="submit_button" value="Submit" disabled>
                 </form>

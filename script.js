@@ -35,9 +35,7 @@ function submitForm(event) {
 }
 
 function doGeoCodeRequest(location) {
-    let url = GEOCODING_ZIP_CODE_URL;
-
-    url = url.replace("{zip_code}", location);
+    let url = createGeocodeUrlForZipCode(location);
     url = url.replace("{country_code}", "US");
     url = url.replace("{API_key}", API_KEY);
     console.log("URL: " + url);
@@ -59,6 +57,12 @@ function doGeoCodeRequest(location) {
         }
     };
     geocodeRequest.send();
+}
+
+function createGeocodeUrlForZipCode(zipCode) {
+    let url = GEOCODING_ZIP_CODE_URL;
+    url = url.replace("{zip_code}", zipCode);
+    return url;
 }
 
 function doCurrentWeatherRequest(locationName, lat, lon) {
