@@ -115,7 +115,7 @@ function displayCurrentWeather(locationName, data) {
     document.getElementById("weather_clouds").textContent = data.clouds.all;
     document.getElementById("weather_wind_speed").textContent = data.wind.speed;
     document.getElementById("weather_wind_direction").textContent = data.wind.deg;
-    document.getElementById("weather_wind_gusts").textContent = data.wind.gust;
+    document.getElementById("weather_wind_gusts").textContent = data.wind.gust || 0;
 
     if (data.rain) {
         document.getElementById("weather_rain_last_hour").textContent = data.rain["1h"];
